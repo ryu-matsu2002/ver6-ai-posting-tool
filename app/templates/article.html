@@ -1,0 +1,30 @@
+<!-- 📁 ファイルパス: templates/article.html -->
+{% extends "base.html" %}
+
+{% block title %}Q&A記事本文生成ツール{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-bold mb-6 text-center text-indigo-700">📝 Q&A記事本文生成ツール</h1>
+
+  <form method="POST" class="mb-8 space-y-4">
+    <label class="block text-sm font-semibold text-gray-700">記事タイトルを入力してください：</label>
+    <input type="text" name="title" required
+           placeholder="例：国内旅行で失敗しない旅館の選び方とは？"
+           class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+    <button type="submit"
+            class="w-full bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+      生成
+    </button>
+  </form>
+
+  {% if article %}
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">✨ 生成された記事本文：</h2>
+      <div class="prose max-w-none">
+        {{ article|safe }}
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

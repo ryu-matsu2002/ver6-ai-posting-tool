@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>キーワード生成</title>
+</head>
+<body>
+    <h1>ジャンルからSEOキーワードを生成</h1>
+
+    <form method="POST">
+        <label>ジャンルを入力してください：</label><br>
+        <input type="text" name="genre" required>
+        <button type="submit">生成</button>
+    </form>
+
+    {% if keywords %}
+        <h2>生成されたキーワード:</h2>
+        <ul>
+            {% for kw in keywords %}
+                <li>{{ kw }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

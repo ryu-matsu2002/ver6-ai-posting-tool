@@ -1,0 +1,29 @@
+<!-- 📁 ファイルパス: templates/keyword.html -->
+{% extends "base.html" %}
+
+{% block title %}キーワード生成{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-bold mb-6 text-center text-indigo-700">ジャンルからSEOキーワードを生成</h1>
+
+  <form method="post" class="mb-6 flex gap-4 items-center">
+    <label for="genre" class="text-sm font-semibold">ジャンルを入力してください：</label>
+    <input type="text" id="genre" name="genre"
+           class="border border-gray-300 rounded px-4 py-2 w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-indigo-400">
+    <button type="submit"
+            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">生成</button>
+  </form>
+
+  {% if keywords %}
+  <div class="bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">生成されたキーワード:</h2>
+    <ul class="list-disc list-inside space-y-1">
+      {% for keyword in keywords %}
+        <li>{{ keyword }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

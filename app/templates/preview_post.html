@@ -1,0 +1,40 @@
+<!-- 📁 templates/preview_post.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事プレビュー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded p-6">
+
+        <!-- アイキャッチ画像 -->
+        {% if post.featured_image %}
+        <div class="mb-6 text-center">
+            <img src="{{ post.featured_image }}" alt="アイキャッチ画像"
+                 class="w-full max-w-2xl mx-auto rounded shadow-md">
+        </div>
+        {% endif %}
+
+        <!-- タイトル -->
+        <h1 class="text-2xl font-bold text-indigo-700 mb-4">{{ post.title }}</h1>
+
+        <!-- 投稿予定日時 -->
+        <div class="text-sm text-gray-500 mb-6">
+            投稿予定日時：{{ post.scheduled_time.strftime('%Y-%m-%d %H:%M') }}
+        </div>
+
+        <!-- 本文（画像含む） -->
+        <div class="prose prose-indigo max-w-none">
+            {{ post.body | safe }}
+        </div>
+
+        <!-- 戻るリンク -->
+        <div class="mt-8">
+            <a href="{{ url_for('admin_log.admin_post_log', site_id=post.site_id) }}"
+               class="text-indigo-600 hover:underline">← 投稿ログへ戻る</a>
+        </div>
+    </div>
+</body>
+</html>

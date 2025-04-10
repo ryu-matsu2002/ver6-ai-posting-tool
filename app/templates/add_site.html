@@ -1,0 +1,35 @@
+# ✅ templates/add_site.html を作成
+# Tailwind CSS スタイルで入力フォームを構成
+<!-- templates/add_site.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>サイト登録</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+<div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+    <h2 class="text-2xl font-bold text-indigo-600 mb-6 text-center">🌐 新規サイト登録</h2>
+    <form method="POST">
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">サイト名</label>
+            <input type="text" name="name" required class="w-full px-3 py-2 border rounded-md">
+        </div>
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">サイトURL</label>
+            <input type="text" name="url" required placeholder="https://example.com" class="w-full px-3 py-2 border rounded-md">
+        </div>
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">WordPressユーザー名</label>
+            <input type="text" name="username" required class="w-full px-3 py-2 border rounded-md">
+        </div>
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700">アプリパスワード</label>
+            <input type="text" name="app_password" required class="w-full px-3 py-2 border rounded-md">
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700">登録する</button>
+    </form>
+</div>
+</body>
+</html>

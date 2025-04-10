@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>WordPress投稿テスト</title>
+    <style>
+        body { font-family: sans-serif; padding: 2rem; line-height: 1.6; }
+        input, textarea { width: 100%; margin-bottom: 1rem; padding: 0.5rem; font-size: 1rem; }
+        button { padding: 0.5rem 1rem; font-size: 1rem; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>WordPress 投稿テスト</h1>
+
+    <form method="POST">
+        <label>WordPressサイトURL：</label>
+        <input type="text" name="site_url" placeholder="https://example.com" required>
+
+        <label>ユーザー名：</label>
+        <input type="text" name="username" required>
+
+        <label>アプリケーションパスワード：</label>
+        <input type="text" name="app_password" required>
+
+        <label>記事タイトル：</label>
+        <input type="text" name="title" required>
+
+        <label>記事本文（HTML可）：</label>
+        <textarea name="content" rows="8" required></textarea>
+
+        <label>アイキャッチ画像URL（Pixabayなど）：</label>
+        <input type="text" name="image_url">
+
+        <button type="submit">投稿する</button>
+    </form>
+
+    {% if result %}
+        <hr>
+        {% if result.success %}
+            <p class="success">✅ 投稿成功！<br>URL: <a href="{{ result.message }}" target="_blank">{{ result.message }}</a></p>
+        {% else %}
+            <p class="error">❌ 投稿失敗：{{ result.message }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事の編集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
+
+<div class="max-w-3xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6 text-center text-indigo-700">✏️ 記事の編集</h1>
+
+    <form method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2">タイトル</label>
+            <input type="text" name="title" value="{{ post.title }}" required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-indigo-500">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2">記事本文（HTML可）</label>
+            <textarea name="body" rows="16" required
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-indigo-500">{{ post.body }}</textarea>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2">投稿予定日時</label>
+            <input type="datetime-local" name="scheduled_time"
+                   value="{{ post.scheduled_time.strftime('%Y-%m-%dT%H:%M') }}"
+                   required
+                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-indigo-500">
+        </div>
+
+        <div class="flex justify-between items-center">
+            <a href="{{ url_for('admin_log.admin_post_log', site_id=post.site_id) }}" class="text-indigo-600 hover:underline">← 投稿一覧に戻る</a>
+            <button type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                保存する
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
